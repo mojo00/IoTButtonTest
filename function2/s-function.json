@@ -1,0 +1,39 @@
+{
+  "name": "function2",
+  "runtime": "python2.7",
+  "description": "Serverless Lambda function for project: IoTButton2",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name": "rulerule",
+      "type": "iot",
+		"config": {
+			"rule": {
+				"name": "rule99",
+				"sql": "SELECT * from 'iotbutton/+'",
+				"iotSQLVersion": "2016-03-23-beta",
+				"description": "lambda function invoked when button is pressed",
+				"ruleDisabled": false
+			}
+		}
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
